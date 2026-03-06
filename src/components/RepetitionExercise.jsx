@@ -1,4 +1,4 @@
-import { useState } from "react"; 
+import { useState } from "react";
 
 function RepetitionExercise({ name }) {
   const [count, setCount] = useState(0);

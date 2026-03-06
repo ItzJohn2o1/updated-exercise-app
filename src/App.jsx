@@ -1,22 +1,24 @@
 import { useState } from 'react'
 import RepetitionExercise from './components/RepetitionExercise'
 import DurationExercise from './components/DurationExercise'
+import ExerciseLaps from './components/Exerciselaps';
+
 
 const exercises = [
   { name: 'Push Ups', type: 'repetition' },
   { name: 'Sit Ups', type: 'repetition' },
   { name: 'Plank', type: 'duration' },
-  { name: 'Run', type: 'duration' },
+  { name: 'Run', type: 'laps' },
 ]
 
 function App() {
   const [current, setCurrent] = useState(null)
 
   function goBackToMainMenu() {
-  if (current !== null) {
-    setCurrent(null)
+    if (current !== null) {
+      setCurrent(null)
+    }
   }
-}
   // If no exercise selected, it'll stay in the main menu
   if (!current) {
     return (
@@ -39,6 +41,7 @@ function App() {
         : <DurationExercise name={current.name} />
       }
       {current !== null && <button onClick={goBackToMainMenu}>Back to Main Menu</button>}
+      {current.type === 'laps' && <ExerciseLaps name={current.name} />}
     </div>
   )
 }
